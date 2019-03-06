@@ -1,8 +1,6 @@
 package com.nongho.springit.domain;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.NonNull;
+import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,17 +11,17 @@ import java.util.List;
 
 @Entity
 @NoArgsConstructor
-@Data
+@RequiredArgsConstructor
+@Getter @Setter
+@ToString
 public class Link extends Auditable{
     @Id
     @GeneratedValue
     private Long id;
     @NonNull
-    private String link;
+    private String title;
     @NonNull
     private String url;
-    @NonNull
-    private String title;
 
     @OneToMany(mappedBy = "link")
     private List<Comment> comments = new ArrayList<>();
